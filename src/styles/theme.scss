@@ -1,0 +1,76 @@
+@import './mixins.scss';
+
+.bg-success {
+    @include bg-color(success);
+  }
+  .bg-primary {
+    @include bg-color(primary);
+  }
+  .bg-secondary {
+    @include bg-color(secondary);
+  }
+  .bg-warning {
+    @include bg-color(warning);
+  }
+  .bg-danger {
+    @include bg-color(danger);
+  }
+  .bg-dark {
+    @include bg-color(dark);
+  }
+  
+  .color-success {
+    @include font-color(success);
+  }
+  .color-primary {
+    @include font-color(primary);
+  }
+  .color-secondary {
+    @include font-color(secondary);
+  }
+  .color-warning {
+    @include font-color(warning);
+  }
+  .color-danger {
+    @include font-color(danger);
+  }
+  .color-dark {
+    @include font-color(dark);
+  }
+  .color-white{
+    @include font-color(white)
+  }
+  
+  .border-success {
+    @include border-color(success);
+  }
+  .border-primary {
+    @include border-color(primary);
+  }
+  .border-secondary {
+    @include border-color(secondary);
+  }
+  .border-warning {
+    @include border-color(warning);
+  }
+  .border-danger {
+    @include border-color(danger);
+  }
+  .border-dark {
+    @include border-color(dark);
+  }
+  .border-white{
+    @include border-color(white)
+  }
+  
+  .border-t {
+    border-bottom: 1px solid map-get($colors, light-gray);
+  }
+  .border-b {
+    border-bottom: 1px solid map-get($colors, light-gray);
+  }
+  
+  .cursor-hand{
+    cursor: pointer;
+  }
+  

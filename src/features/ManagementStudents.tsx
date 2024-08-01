@@ -18,9 +18,7 @@ export const ManagementStudents = () => {
   const [selectedRow, setSelectedRow] = React.useState<Student | any>({});
   const [selectedRows, setSelectedRows] = React.useState<Student[] | any[]>([]);
   const [isMultiple, setIsMultiple] = React.useState<boolean>(false);
-  const [checkeds, setCheckeds] = React.useState<Student[] | any[]>([]);
-  const [rowsPerPage, setRowsPerPage] = React.useState<number>(10);
-  const [page, setPage] = React.useState<number>(0);
+  const [checkeds, setCheckeds] = React.useState<Student[] | any[]>([]); 
   const [alertInfo, setAlertInfo] = React.useState({
     color: "danger",
     title: "Error",
@@ -48,7 +46,8 @@ export const ManagementStudents = () => {
   const onSaveDataDialog = async (data: any) => {
     if (data.id) {
       //edit
-      await editStudents(data, data.id).then((next: any) => {
+      const newData = {...data, grade: data.grade.id}
+      await editStudents(newData, data.id).then((next: any) => {
         if (next.errorMsg) {
           setAlertInfo({
             color: "danger",
@@ -64,8 +63,8 @@ export const ManagementStudents = () => {
             content: "Student edited successfully!!",
           });
           setOpenAlert(true);
-          getAllStudents(rowsPerPage, page);
-          console.log("Data edited");
+          getAllStudents();
+          
           setSelectedRow({});
         }
       });
@@ -81,7 +80,7 @@ export const ManagementStudents = () => {
             content: result.errorMsg,
           });          
           setOpenAlert(true);
-          console.log("Alert",alertInfo)
+          
         } else {
           setAlertInfo({
             color: "success",
@@ -89,7 +88,7 @@ export const ManagementStudents = () => {
             content: "Student added successfully!!",
           });
           setOpenAlert(true);
-          getAllStudents(rowsPerPage, page);
+          getAllStudents();
           setSelectedRow({});
           setOpenDialog(false);
         }
@@ -113,6 +112,7 @@ export const ManagementStudents = () => {
         setSelectedRow(data);
         setOpenDialogConf(true);
       },
+      
     },
   ];
 
@@ -168,8 +168,8 @@ export const ManagementStudents = () => {
             content: "Student deleted successfully!!",
           });
           setOpenAlert(true);
-          getAllStudents(rowsPerPage, page);
-          console.log("Data edited");
+          getAllStudents();
+          
           setSelectedRow({});
         }
       });
@@ -193,7 +193,7 @@ export const ManagementStudents = () => {
             content: "Students deleted successfully!!",
           });
           setOpenAlert(true);
-          getAllStudents(rowsPerPage, page);          
+          getAllStudents();          
           setSelectedRow({});
           setSelectedRows([]);
         }
@@ -201,23 +201,27 @@ export const ManagementStudents = () => {
   }
 
   const onRowSelect = (data: any) => {
+
     setSelectedRow(data);
+
     const rowsOld = selectedRows;
+    
     const found = selectedRows?.findIndex((item)=> item=== data.id);
-    if(found && found !== -1){
-        rowsOld.splice(found,1);
-        setSelectedRows(rowsOld);
+    
+
+    if(found && found !== -1){       
+        setSelectedRows(selectedRows.splice(found, 1));        
     }
     else{
         rowsOld.push(data.id);
+        setSelectedRows(rowsOld)
     }
 
    
-     
   }
 
   useEffect(() => {
-    getAllStudents(10, 0);
+    getAllStudents();
     getAllGrades(10, 0);
   }, []);
 
@@ -233,10 +237,10 @@ export const ManagementStudents = () => {
             onClick: () => {
                 setIsMultiple(true);
                 setOpenDialogConf(true);
-                
             },
             color: "danger",
             icon: "minus-circle",
+            disabled: selectedRows.length < 2
           },
           {
             label: "New Student",
@@ -251,7 +255,7 @@ export const ManagementStudents = () => {
       />
       <div className="p-2">
         <TableLayout
-         selectedRows={selectedRows}
+          selectedRows={selectedRows}
           dataTable={students}
           columnsProperties={columns}
           onSelectRow={(dataSelected) => onRowSelect(dataSelected)}

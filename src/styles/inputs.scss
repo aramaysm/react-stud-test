@@ -11,12 +11,7 @@ input:focus {
     border-radius: 3px;    
 }
 
-input:checked{
-    outline: 1px solid map-get($colors, success);
-    border-radius: 3px;
-    color: map-get($colors, success);
-    background-color: map-get($colors, success) !important;
-}
+
 
 input[type=text]:focus {
     outline: none;

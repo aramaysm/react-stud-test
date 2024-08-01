@@ -32,3 +32,7 @@
 .button-danger {
   @include button-icon-and-text(danger);
 }
+.button-danger:disabled {
+  @include button-icon-and-text(danger-light);
+}
+

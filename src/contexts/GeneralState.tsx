@@ -35,7 +35,7 @@ const GeneralState : React.FC<{children: React.ReactNode}> = ({ children }) => {
         return false;
       }
     } catch (error:any) {
-      console.log(error.response.data.error.message)
+      
       if (error?.response?.data?.statusCode === 401)
         window.location.replace("/auth-login");
       return {
@@ -67,7 +67,7 @@ const GeneralState : React.FC<{children: React.ReactNode}> = ({ children }) => {
     }
   };
 
-  const getAllStudents = async (itemPerPage: any, page: any) => {
+  const getAllStudents = async () => {
     const token =
       localStorage.getItem("accessToken")?.slice(1, -1);
 
@@ -75,7 +75,7 @@ const GeneralState : React.FC<{children: React.ReactNode}> = ({ children }) => {
     try {
       let res;
       
-        res = await axios.get(`${BASE_URL}student?limit=${itemPerPage}&page=${page}`);
+        res = await axios.get(`${BASE_URL}student?limit=${10}&page=${0}`);
      
       if (res.status === 200) {
         dispatch({
@@ -90,7 +90,7 @@ const GeneralState : React.FC<{children: React.ReactNode}> = ({ children }) => {
     } catch (error:any) {
       if (error?.response?.data?.statusCode === 401)
         window.location.replace("/auth-login");
-      console.log(error);
+      
     }
   };
 
@@ -144,7 +144,7 @@ const GeneralState : React.FC<{children: React.ReactNode}> = ({ children }) => {
       },
     };
     try {
-      const res = await axios.delete(`${BASE_URL}student/multiple/${id}`, config);
+      const res = await axios.put(`${BASE_URL}student/remove/multiple`,{ids: id},config);
       if (res.status === 200) {
         return true;
       } else {
@@ -183,7 +183,7 @@ const GeneralState : React.FC<{children: React.ReactNode}> = ({ children }) => {
     } catch (error:any) {
       if (error?.response?.data?.statusCode === 401)
         window.location.replace("/auth-login");
-      console.log(error);
+      
     }
   };
 

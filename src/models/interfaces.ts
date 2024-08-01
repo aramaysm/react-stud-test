@@ -17,7 +17,8 @@ export interface ColumnPropertiesTable {
 export interface ActionsButtonsTable {
     icon: string,
     color: string,
-    onClick: (data:any)=> void
+    onClick: (data:any)=> void,
+    disabled?:boolean
 }
 
 export interface OptionsSelect {

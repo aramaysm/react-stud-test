@@ -11,7 +11,6 @@ interface DialogProps {
   saveInfo: (data: any) => void;
   dataInputs: InputDialog[];
   data?: any;
-  
 }
 
 export const Dialog: React.FC<DialogProps> = ({
@@ -21,33 +20,34 @@ export const Dialog: React.FC<DialogProps> = ({
   dataInputs,
   title,
   data,
- 
 }: DialogProps) => {
+  const [newData, setNewData] = React.useState(data);
+  const [isvalid, setIsValid] = React.useState(false);
 
+  React.useEffect(() => {
+    
+    setNewData(data);
+    if (data.id !== undefined) setIsValid(true);
+    else setIsValid(false);
+  }, [data[dataInputs[0].key]]);
 
-    const[newData, setNewData] = React.useState(data);
-    const[isvalid, setIsValid] = React.useState(false);
+  const onChangeInput = (key: string, value: string) => {
+    const oldData = newData;
+    oldData[key] = value;
+    setNewData(oldData);
+    isValid();
+  };
 
-    React.useEffect(()=>{
-      setNewData(data);
-      setIsValid(false)
-    },[data[dataInputs[0].key]]);
-
-
-    const onChangeInput = (key: string, value: string) => {
-      const oldData = newData;
-      oldData[key] = value;
-      setNewData(oldData);
-      isValid()
-    }
-
-    const isValid = () => {
+  const isValid = () => {
+    if (!newData.id) {
       const values = Object.values(newData);
-      const found = values.findIndex((item)=> item === "" || item === null);
-      
-      setIsValid(values.length < dataInputs.length-1 || found !== -1 ? false : true)
-      
+      const found = values.findIndex((item) => item === "" || item === null);
+
+      setIsValid(
+        values.length < dataInputs.length - 1 || found !== -1 ? false : true
+      );
     }
+  };
 
   return openDialog ? (
     <div className="dialog">
@@ -57,15 +57,20 @@ export const Dialog: React.FC<DialogProps> = ({
       <div className="column gap-1 mt-1">
         {dataInputs.map((input) =>
           input.type === EnumTypeInput.TEXT ||
-          input.type === EnumTypeInput.NUMBER  || input.type === EnumTypeInput.EMAIL ? (
+          input.type === EnumTypeInput.NUMBER ||
+          input.type === EnumTypeInput.EMAIL ? (
             <TextField
               errorMsg={input.errorMsg ? input.errorMsg : ""}
               key={input.key}
               type={input.type}
               label={input.label}
-              onChange={(value) => {onChangeInput(input.key, value)}}
+              onChange={(value) => {
+                onChangeInput(input.key, value);
+              }}
               color={""}
-              value={newData[input.key] ? newData[input.key] : newData[input.key]}
+              value={
+                newData[input.key] ? newData[input.key] : newData[input.key]
+              }
             />
           ) : input.type === EnumTypeInput.SELECT ? (
             <Select
@@ -81,8 +86,12 @@ export const Dialog: React.FC<DialogProps> = ({
 
       <div className="row just-center gap-1 mt-2">
         <Button label={"Cancel"} onClick={closeDialog} color={"secondary"} />
-        <Button label={"Save"} onClick={()=> saveInfo(newData)} color={"primary"}
-        disabled={!isvalid} />
+        <Button
+          label={"Save"}
+          onClick={() => saveInfo(newData)}
+          color={"primary"}
+          disabled={!isvalid}
+        />
       </div>
     </div>
   ) : (

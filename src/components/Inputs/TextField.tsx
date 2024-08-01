@@ -27,6 +27,7 @@ export const TextField: React.FC<TextFieldProps> = ({
 
     const onChangeInput = (event: any) => {
         setError(false);
+        const regex = /^[ a-zA-ZÀ-ÿ\u00f1\u00d1]*$/g
 
         if(type === EnumTypeInput.NUMBER){
             if(event.target.validity.valid)
@@ -34,7 +35,7 @@ export const TextField: React.FC<TextFieldProps> = ({
             else setError(true);
         }
         else if(type === EnumTypeInput.TEXT) {
-          if(event.target.validity.valid)
+          if(regex.test(event.target.value) )
               onChange(event.target.value)
           else setError(true);
       }

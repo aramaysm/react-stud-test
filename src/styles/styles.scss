@@ -5,51 +5,8 @@
 @import './inputs';
 @import './flexs';
 @import './table';
-
-
-.dialog {
-    position: absolute !important;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #a8a8a8;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 10px;
-    gap: 10px;
-    background-color: white;
-    width: 300px;
-}
-
-.dialog-alert {
-    position: absolute !important;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #a8a8a8;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding-bottom: 10px;
-    gap: 10px;
-    background-color: white;
-    width: 300px;
-    z-index: 1000;
-}
-
-#header-dialog {
-    border-bottom: 1px solid map-get($colors, light-gray);
-    height: 35px;
-    margin: 0;
-    padding: 0;
-}
-
-#header-dialog h4 {
-    margin: 0;
-}
+@import './dialogs.scss';
+@import './theme.scss'
 
 
 

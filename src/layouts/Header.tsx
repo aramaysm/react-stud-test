@@ -20,12 +20,13 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="column w-5 items-center">
         <div className="row gap-2 items-center just-end pe-1 ">
           {buttons?.map((item) => (
-            <div className="column items-center">
+            <div key={item.label} className="column items-center">
               <Button
                 label={item.label}
                 onClick={item.onClick}
                 color={item.color}
                 icon={item.icon}
+                disabled={item.disabled}
               />
             </div>
           ))}
