@@ -22,8 +22,8 @@ export const DialogConfirm: React.FC<DialogProps> = ({
       <div id="header-dialog" className={"row w-full bg-"+color}>
         <h4 className="ms-1 color-white">{title}</h4>
       </div>
-      <div className="column items-center gap-2">
-        <div>
+      <div className="column items-center gap-2 ">
+        <div className="mt-2 mb-2">
             <h5>{content}</h5>
         </div>
         <div className="row gap-1 just-around">

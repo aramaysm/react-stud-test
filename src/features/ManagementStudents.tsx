@@ -121,21 +121,25 @@ export const ManagementStudents = () => {
       type: EnumTypeInput.TEXT,
       key: "firstName",
       label: "Firstname",
+      errorMsg: "Introduce just letters",
     },
     {
       type: EnumTypeInput.TEXT,
       key: "lastName",
       label: "Lastname",
+      errorMsg: "Introduce just letters",
     },
     {
-      type: EnumTypeInput.TEXT,
+      type: EnumTypeInput.EMAIL,
       key: "email",
       label: "Email",
+      errorMsg: "Invalid format of email"
     },
     {
       type: EnumTypeInput.NUMBER,
       key: "age",
       label: "Age",
+      errorMsg: "Introduce just numbers",
     },
     {
       type: EnumTypeInput.SELECT,

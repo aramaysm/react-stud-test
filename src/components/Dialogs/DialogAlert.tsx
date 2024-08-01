@@ -21,7 +21,7 @@ export const DialogAlert: React.FC<DialogProps> = ({
         <h4 className="ms-1 color-white">{title}</h4>
       </div>
       <div className="column items-center gap-2">
-        <div>
+        <div className="mt-2 mb-2">
             <h5>{content}</h5>
         </div>
         <div className="row just-center">

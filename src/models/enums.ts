@@ -3,5 +3,6 @@ export enum EnumTypeInput {
     TEXT = 'Text',
     SELECT = 'Select',
     CHECK = 'Check',
+    EMAIL = 'Email',
 }
 

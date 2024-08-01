@@ -8,6 +8,11 @@
   background-color: map-get($colors, $color-name);
 }
 
+@mixin border-color($color-name) {
+  outline: none;
+  border: 1px solid map-get($colors, $color-name) !important;
+}
+
 @mixin font-size-rem($size) {
   font-size: $size / 16 * 1rem;
 }
@@ -51,6 +56,28 @@
 }
 .color-white{
   @include font-color(white)
+}
+
+.border-success {
+  @include border-color(success);
+}
+.border-primary {
+  @include border-color(primary);
+}
+.border-secondary {
+  @include border-color(secondary);
+}
+.border-warning {
+  @include border-color(warning);
+}
+.border-danger {
+  @include border-color(danger);
+}
+.border-dark {
+  @include border-color(dark);
+}
+.border-white{
+  @include border-color(white)
 }
 
 .border-t {

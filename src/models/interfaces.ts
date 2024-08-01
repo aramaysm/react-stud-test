@@ -29,7 +29,8 @@ export interface InputDialog {
     type: EnumTypeInput,
     label: string,
     key: string,
-    options?: OptionsSelect[]
+    options?: OptionsSelect[],
+    errorMsg?: string,
 }
 
 export interface Student{

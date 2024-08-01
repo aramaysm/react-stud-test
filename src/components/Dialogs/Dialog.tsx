@@ -41,11 +41,11 @@ export const Dialog: React.FC<DialogProps> = ({
       isValid()
     }
 
-    const isValid = ()=> {
+    const isValid = () => {
       const values = Object.values(newData);
       const found = values.findIndex((item)=> item === "" || item === null);
       
-      setIsValid(values.length < Object.values(data).length && found !== -1 ? false : true)
+      setIsValid(values.length < dataInputs.length-1 || found !== -1 ? false : true)
       
     }
 
@@ -57,8 +57,9 @@ export const Dialog: React.FC<DialogProps> = ({
       <div className="column gap-1 mt-1">
         {dataInputs.map((input) =>
           input.type === EnumTypeInput.TEXT ||
-          input.type === EnumTypeInput.NUMBER ? (
+          input.type === EnumTypeInput.NUMBER  || input.type === EnumTypeInput.EMAIL ? (
             <TextField
+              errorMsg={input.errorMsg ? input.errorMsg : ""}
               key={input.key}
               type={input.type}
               label={input.label}
@@ -78,7 +79,7 @@ export const Dialog: React.FC<DialogProps> = ({
         )}
       </div>
 
-      <div className="row gap-1">
+      <div className="row just-center gap-1 mt-2">
         <Button label={"Cancel"} onClick={closeDialog} color={"secondary"} />
         <Button label={"Save"} onClick={()=> saveInfo(newData)} color={"primary"}
         disabled={!isvalid} />
