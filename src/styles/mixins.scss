@@ -1,0 +1,61 @@
+@import "./colors";
+
+@mixin font-color($color-name) {
+  color: map-get($colors, $color-name);
+}
+
+@mixin bg-color($color-name) {
+  background-color: map-get($colors, $color-name);
+}
+
+@mixin font-size-rem($size) {
+  font-size: $size / 16 * 1rem;
+}
+
+.bg-success {
+  @include bg-color(success);
+}
+.bg-primary {
+  @include bg-color(primary);
+}
+.bg-secondary {
+  @include bg-color(secondary);
+}
+.bg-warning {
+  @include bg-color(warning);
+}
+.bg-danger {
+  @include bg-color(danger);
+}
+.bg-dark {
+  @include bg-color(dark);
+}
+
+.color-success {
+  @include font-color(success);
+}
+.color-primary {
+  @include font-color(primary);
+}
+.color-secondary {
+  @include font-color(secondary);
+}
+.color-warning {
+  @include font-color(warning);
+}
+.color-danger {
+  @include font-color(danger);
+}
+.color-dark {
+  @include font-color(dark);
+}
+.color-white{
+  @include font-color(white)
+}
+
+.border-t {
+  border-bottom: 1px solid map-get($colors, light-gray);
+}
+.border-b {
+  border-bottom: 1px solid map-get($colors, light-gray);
+}

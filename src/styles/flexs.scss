@@ -1,0 +1,128 @@
+
+
+.row{
+    display: flex;
+    flex-direction: row;
+    width: 98.5%;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;    
+}
+
+.w-1{
+    width: 10%;
+}
+.w-2{
+    width: 20%;
+}
+.w-3{
+    width: 30%;
+}
+.w-4{
+    width: 40%;
+}
+.w-5{
+    width: 50%;
+}
+.w-6{
+    width: 60%;
+}
+.w-7{
+    width: 70%;
+}
+.w-8{
+    width: 80%;
+}
+.w-9{
+    width: 90%;
+}
+.w-full{
+    width: 100%;
+}
+
+.gap-1{
+    gap: 10px;
+}
+.gap-2{
+    gap: 20px;
+}
+.gap-3{
+    gap: 30px;
+}
+
+.just-bet{
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+}
+.just-center{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.just-around{
+    display: flex;
+    justify-content: space-around;
+    align-content: space-around;
+}
+.just-start{
+    display: flex;
+    justify-content: start;
+    align-content: start;
+}
+.just-end{
+    display: flex;
+    justify-content: end;
+    align-content: end;
+}
+.items-center{
+    display: flex;
+    align-items: center;
+}
+.m-1{
+    margin: 10px !important;
+}
+.m-2{
+    margin: 20px  !important;
+}
+.m-3{
+    margin: 30px !important;
+}
+.mt-1{
+    margin-top: 10px !important;
+}
+.mt-2{
+    margin-top: 20px !important;
+}
+.mt-3{
+    margin-top: 30px !important;
+}
+.ms-1{
+    margin-left: 10px !important;
+}
+.ms-2{
+    margin-left: 20px !important;
+}
+.ms-3{
+    margin-left: 30px !important;
+}
+.p-0{
+    padding: 0 !important;
+}
+.p-1{
+    padding: 10px !important;
+}
+.p-2{
+    padding: 20px !important;
+}
+.p-3{
+    padding: 30px !important;
+}
+.ps-1{
+    padding-left: 10px !important;
+}
+.pe-1{
+    padding-right: 10px !important;
+}

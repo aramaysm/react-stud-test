@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import "./styles/styles.scss";
+import { Button } from "./components/Button";
+import { CheckBox, TextField } from "./components/Inputs/";
+import { Header } from "./layouts/Header";
+import { Table } from "./components/Table";
+import {
+  ActionsButtonsTable,
+  ColumnPropertiesTable,
+  EnumTypeInput,
+  InputDialog,
+} from "./models";
+import { Dialog } from "./components/Dialogs";
+import { ManagementStudents } from "./features/ManagementStudents";
 
 function App() {
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App w-full">
+      <ManagementStudents />
     </div>
   );
 }

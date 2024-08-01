@@ -1,0 +1,34 @@
+@import "./colors";
+
+@mixin button-icon-and-text($color-name) {
+  background-color: map-get($colors, $color-name);
+  border-radius: 3px;
+  color: white;
+  text-align: center;
+  height: 35px;
+  min-width: 120px;
+  font-size: 14px;
+  border: none;
+}
+
+.button-primary {
+  @include button-icon-and-text(primary);
+}
+.button-primary:disabled {
+  @include button-icon-and-text(lightblue);
+}
+.button-success {
+  @include button-icon-and-text(success);
+}
+
+.button-warning {
+  @include button-icon-and-text(warning);
+}
+
+.button-secondary {
+  @include button-icon-and-text(secondary);
+}
+
+.button-danger {
+  @include button-icon-and-text(danger);
+}
